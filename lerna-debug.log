@@ -1,0 +1,9 @@
+0 silly argv { _: [ 'create' ], lernaVersion: '6.6.1', '$0': 'lerna', name: 'core' }
+1 notice cli v6.6.1
+2 verbose rootPath /mydata/jiao-cli-dev
+3 error Error: Command failed with exit code 1: git config --get user.name
+3 error     at makeError (/usr/local/node/lib/node_modules/lerna/node_modules/execa/lib/error.js:59:11)
+3 error     at Function.module.exports.sync (/usr/local/node/lib/node_modules/lerna/node_modules/execa/index.js:186:17)
+3 error     at Object.execSync (/usr/local/node/lib/node_modules/lerna/node_modules/@lerna/create/dist/command.js:58:21)
+3 error     at CreateCommand.gitConfig (/usr/local/node/lib/node_modules/lerna/node_modules/@lerna/create/dist/command.js:3466:31)
+3 error     at CreateCommand.initialize (/usr/local/node/lib/node_modules/lerna/node_modules/@lerna/create/dist/command.js:3394:50)

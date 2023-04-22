@@ -1,0 +1,23 @@
+{
+  "name": "@jiao-cli-dev/core",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "jiaodashi <1500983162@qq.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/core.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "node ./__tests__/core.test.js"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "@jiao-cli-dev/utils": "^1.0.0"
+  }
+}

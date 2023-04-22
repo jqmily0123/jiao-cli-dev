@@ -1,9 +1,18 @@
-0 silly argv { _: [ 'create' ], lernaVersion: '6.6.1', '$0': 'lerna', name: 'core' }
+0 silly argv { _: [ 'version' ], lernaVersion: '6.6.1', '$0': 'lerna' }
 1 notice cli v6.6.1
 2 verbose rootPath /mydata/jiao-cli-dev
-3 error Error: Command failed with exit code 1: git config --get user.name
-3 error     at makeError (/usr/local/node/lib/node_modules/lerna/node_modules/execa/lib/error.js:59:11)
-3 error     at Function.module.exports.sync (/usr/local/node/lib/node_modules/lerna/node_modules/execa/index.js:186:17)
-3 error     at Object.execSync (/usr/local/node/lib/node_modules/lerna/node_modules/@lerna/create/dist/command.js:58:21)
-3 error     at CreateCommand.gitConfig (/usr/local/node/lib/node_modules/lerna/node_modules/@lerna/create/dist/command.js:3466:31)
-3 error     at CreateCommand.initialize (/usr/local/node/lib/node_modules/lerna/node_modules/@lerna/create/dist/command.js:3394:50)
+3 info current version 1.0.0
+4 silly isAnythingCommitted
+5 verbose isAnythingCommitted 1
+6 silly getCurrentBranch
+7 verbose currentBranch master
+8 silly remoteBranchExists
+9 silly isBehindUpstream
+10 error Error: Command failed with exit code 1: git remote update
+10 error 致命错误：无法访问 'https://github.com/jqmily0123/jiao-cli-dev.git/'：TCP connection reset by peer
+10 error     at makeError (/usr/local/node/lib/node_modules/lerna/node_modules/execa/lib/error.js:59:11)
+10 error     at Function.module.exports.sync (/usr/local/node/lib/node_modules/lerna/node_modules/execa/index.js:186:17)
+10 error     at Object.execSync (/usr/local/node/lib/node_modules/lerna/node_modules/@lerna/child-process/index.js:39:16)
+10 error     at updateRemote (/usr/local/node/lib/node_modules/lerna/dist/cli.js:5908:22)
+10 error     at isBehindUpstream (/usr/local/node/lib/node_modules/lerna/dist/cli.js:5898:7)
+10 error     at VersionCommand.initialize (/usr/local/node/lib/node_modules/lerna/dist/cli.js:6233:57)

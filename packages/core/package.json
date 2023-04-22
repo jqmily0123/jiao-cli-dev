@@ -19,5 +19,9 @@
   "dependencies": {
     "@jiao-cli-dev/utils": "^1.1.0",
     "lodash": "^4.17.21"
+  },
+  "gitHead": "cec9ef5ad5cd3e393031c6a445f78e0457bed73e",
+  "publishConfig": {
+    "access": "public"
   }
 }

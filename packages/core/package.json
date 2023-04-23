@@ -22,5 +22,8 @@
   },
   "bugs": {
     "url": "https://github.com/jqmily0123/jiao-cli-dev/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

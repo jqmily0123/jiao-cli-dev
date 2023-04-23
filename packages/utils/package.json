@@ -1,6 +1,6 @@
 {
   "name": "@jiao-cli-dev/utils",
-  "version": "0.3.0",
+  "version": "0.2.0",
   "description": "> TODO: description",
   "author": "jiaodashi <1500983162@qq.com>",
   "homepage": "https://github.com/jqmily0123/jiao-cli-dev#readme",
@@ -22,5 +22,8 @@
   },
   "bugs": {
     "url": "https://github.com/jqmily0123/jiao-cli-dev/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

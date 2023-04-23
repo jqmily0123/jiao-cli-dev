@@ -1,14 +1,14 @@
 0 silly argv {
-0 silly argv   _: [ 'init' ],
+0 silly argv   _: [ 'create' ],
 0 silly argv   lernaVersion: '6.6.1',
-0 silly argv   '$0': '/usr/local/node/lib/node_modules/lerna/dist/cli.js'
+0 silly argv   '$0': '/usr/local/node/lib/node_modules/lerna/dist/cli.js',
+0 silly argv   name: 'core'
 0 silly argv }
 1 notice cli v6.6.1
 2 verbose rootPath /usr/jiaodata/jiao-cli-dev
-3 verbose init skipping validations
-4 verbose init skipping preparations
-5 info Initializing Git repository
-6 error Error: Command failed with ENOENT: git init
-6 error spawn git ENOENT
-6 error     at Process.ChildProcess._handle.onexit (node:internal/child_process:285:19)
-6 error     at onErrorNT (node:internal/child_process:485:16)
+3 error Error: Command failed with exit code 1: git config --get user.name
+3 error     at makeError (/usr/local/node/lib/node_modules/lerna/node_modules/.store/execa@5.0.0/node_modules/execa/lib/error.js:59:11)
+3 error     at Function.module.exports.sync (/usr/local/node/lib/node_modules/lerna/node_modules/.store/execa@5.0.0/node_modules/execa/index.js:186:17)
+3 error     at Object.execSync (/usr/local/node/lib/node_modules/lerna/node_modules/.store/@lerna+create@6.6.1/node_modules/@lerna/create/dist/command.js:58:21)
+3 error     at CreateCommand.gitConfig (/usr/local/node/lib/node_modules/lerna/node_modules/.store/@lerna+create@6.6.1/node_modules/@lerna/create/dist/command.js:3466:31)
+3 error     at CreateCommand.initialize (/usr/local/node/lib/node_modules/lerna/node_modules/.store/@lerna+create@6.6.1/node_modules/@lerna/create/dist/command.js:3394:50)

@@ -1,7 +1,6 @@
 "use strict";
 
 module.exports = core;
-
 function core() {
-  return "Hello from core123456789";
+  console.log("执行core");
 }

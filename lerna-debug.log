@@ -1,14 +1,13 @@
 0 silly argv {
-0 silly argv   _: [ 'create' ],
+0 silly argv   _: [ 'add' ],
+0 silly argv   globs: [],
 0 silly argv   lernaVersion: '6.6.1',
 0 silly argv   '$0': '/usr/local/node/lib/node_modules/lerna/dist/cli.js',
-0 silly argv   name: 'core'
+0 silly argv   pkg: 'jiao-dev'
 0 silly argv }
 1 notice cli v6.6.1
 2 verbose rootPath /usr/jiaodata/jiao-cli-dev
-3 error Error: Command failed with exit code 1: git config --get user.name
-3 error     at makeError (/usr/local/node/lib/node_modules/lerna/node_modules/.store/execa@5.0.0/node_modules/execa/lib/error.js:59:11)
-3 error     at Function.module.exports.sync (/usr/local/node/lib/node_modules/lerna/node_modules/.store/execa@5.0.0/node_modules/execa/index.js:186:17)
-3 error     at Object.execSync (/usr/local/node/lib/node_modules/lerna/node_modules/.store/@lerna+create@6.6.1/node_modules/@lerna/create/dist/command.js:58:21)
-3 error     at CreateCommand.gitConfig (/usr/local/node/lib/node_modules/lerna/node_modules/.store/@lerna+create@6.6.1/node_modules/@lerna/create/dist/command.js:3466:31)
-3 error     at CreateCommand.initialize (/usr/local/node/lib/node_modules/lerna/node_modules/.store/@lerna+create@6.6.1/node_modules/@lerna/create/dist/command.js:3394:50)
+3 error HttpErrorGeneral: 404 Not Found - GET https://registry.npmjs.org/jiao-dev - Not found
+3 error     at /usr/local/node/lib/node_modules/lerna/node_modules/.store/npm-registry-fetch@13.3.1/node_modules/npm-registry-fetch/lib/check-response.js:95:15
+3 error     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+3 error     at async RegistryFetcher.packument (/usr/local/node/lib/node_modules/lerna/node_modules/.store/pacote@13.6.2/node_modules/pacote/lib/registry.js:92:19)

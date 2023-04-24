@@ -11,9 +11,6 @@
   "dependencies": {
     "lerna": "^6.6.1"
   },
-  "workspaces": [
-    "packages/*"
-  ],
   "publishConfig": {
     "access": "public"
   }

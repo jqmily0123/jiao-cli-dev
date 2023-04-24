@@ -1,7 +1,0 @@
-{
-  "name": "package-dag-2a",
-  "version": "1.0.0",
-  "dependencies": {
-    "package-dag-1": "1.0.0"
-  }
-}

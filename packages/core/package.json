@@ -34,5 +34,6 @@
   },
   "devDependencies": {
     "imooc-cli-dev": "^1.0.0"
-  }
+  },
+  "gitHead": "cf55815443ea8d87b4660558fbc4c821d96e99b5"
 }

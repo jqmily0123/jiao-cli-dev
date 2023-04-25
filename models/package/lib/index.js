@@ -10,7 +10,6 @@ const path = require("path");
 const npminstall = require("npminstall");
 const pathExists = require("path-exists").sync;
 const fse = require("fs-extra");
-console.log();
 class Package {
   constructor(options) {
     if (!options) {

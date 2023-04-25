@@ -22,6 +22,7 @@ class InitCommand extends Command {
       // 3.安装模板
     } catch (error) {
       log.error(error.message);
+      console.log("jiaodashi");
     }
   }
   async prepare() {

@@ -4,12 +4,11 @@ module.exports = core;
 const path = require("path");
 const pkg = require("../package.json");
 const log = require("@jiao-cli-dev/log");
-const semver = require("semver");
+
 const colors = require("colors/safe");
 const userHome = require("user-home");
 const commander = require("commander");
 // const pathExists = require("path-exists");
-const { LOW_NODE_VERSION } = require("./const");
 const init = require("@jiao-cli-dev/init");
 const exec = require("@jiao-cli-dev/exec");
 async function core() {
@@ -17,7 +16,6 @@ async function core() {
   registerCommand();
 }
 async function prepare() {
-  checkNodeVersion();
   checkPkgVersion();
   checkRoot();
   // checkUserHome();
@@ -137,16 +135,7 @@ function checkRoot() {
   const rootCheck = require("root-check");
   rootCheck();
 }
-// 检查node版本
-function checkNodeVersion() {
-  const currentVersion = process.version;
-  const lowestVersion = LOW_NODE_VERSION;
-  if (!semver.gte(currentVersion, lowestVersion)) {
-    throw new Error(
-      colors.red(`jiao-cli需要安装 ${lowestVersion} 以上版本的node.js`)
-    );
-  }
-}
+
 //检查脚手架的版本
 function checkPkgVersion() {
   log.info("cli", pkg.version);

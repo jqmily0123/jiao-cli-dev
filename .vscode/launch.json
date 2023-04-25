@@ -5,13 +5,20 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Launch Program123",
+      "program": "${workspaceFolder}/app.js",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node"
+    },
+    {
       "name": "Launch Program",
       "program": "${workspaceFolder}/core/cli",
       "request": "launch",
       "skipFiles": ["<node_internals>/**"],
       "type": "node",
       "cwd": "${workspaceFolder}",
-      "console": "internalConsole"
+      "console": "integratedTerminal"
     }
   ]
 }

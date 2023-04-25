@@ -9,7 +9,7 @@ const colors = require("colors/safe");
 const userHome = require("user-home");
 const commander = require("commander");
 // const pathExists = require("path-exists");
-const init = require("@jiao-cli-dev/init");
+// const log = require("@jiao-cli-dev/log");
 const exec = require("@jiao-cli-dev/exec");
 async function core() {
   prepare();

@@ -30,15 +30,15 @@
     "access": "public"
   },
   "dependencies": {
+    "@jiao-cli-dev/exec": "file:../exec",
+    "@jiao-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
     "@jiao-cli-dev/log": "file:../../utils/log",
     "@jiao-cli-dev/utils": "file:../../utils",
-    "@jiao-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
-    "@jiao-cli-dev/init": "file:../../commands/init",
-    "@jiao-cli-dev/exec": "file:../exec",
     "colors": "^1.4.0",
     "commander": "^6.2.1",
     "dotenv": "^8.2.0",
     "import-local": "^3.0.2",
+    "lerna": "^3.22.1",
     "npmlog": "^4.1.2",
     "path-exists": "^5.0.0",
     "root-check": "^1.0.0",

@@ -27,9 +27,9 @@
     "url": "https://github.com/jqmily0123/jiao-cli-dev/issues"
   },
   "dependencies": {
-    "@jiao-cli-dev/utils": "file:../../utils",
-    "@jiao-cli-dev/format-path": "file:../../utils/format-path",
     "@imooc-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
+    "@jiao-cli-dev/format-path": "file:../../utils/format-path",
+    "@jiao-cli-dev/utils": "file:../../utils",
     "fs-extra": "^9.0.1",
     "npminstall": "^4.10.0",
     "path-exists": "^4.0.0",

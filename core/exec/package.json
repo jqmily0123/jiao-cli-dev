@@ -27,7 +27,7 @@
     "url": "https://github.com/jqmily0123/jiao-cli-dev/issues"
   },
   "dependencies": {
-    "@jiao-cli-dev/package": "file:../../models/package",
-    "@jiao-cli-dev/log": "file:../../utils/log"
+    "@jiao-cli-dev/log": "file:../../utils/log",
+    "@jiao-cli-dev/package": "file:../../models/package"
   }
 }

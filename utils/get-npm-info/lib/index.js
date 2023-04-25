@@ -1,6 +1,5 @@
 "use strict";
 
-module.exports = { getNpmInfo, getNpmVersions, getNpmSemverVersions };
 const axios = require("axios");
 const urlJoin = require("url-join");
 const semver = require("semver");
@@ -39,13 +38,28 @@ async function getNpmVersions(npmName, registry) {
   }
 }
 function getSemverVersions(baseVersion, versions) {
-  versions = versions.filter((version) => {
-    semver.satisfies(version, `^${baseVersion}`);
-  });
-  return versions;
+  return (versions = versions
+    .filter((version) => semver.satisfies(version, `>${baseVersion}`))
+    .sort((a, b) => (semver.gt(b, a) ? 1 : -1)));
 }
-async function getNpmSemverVersions(npmName, registry, baseVersion) {
+async function getNpmSemverVersions(baseVersion, npmName, registry) {
   const versions = await getNpmVersions(npmName, registry);
   const newVersions = getSemverVersions(baseVersion, versions);
-  console.log(newVersions);
+  if (newVersions && newVersions.length > 0) {
+    return newVersions[0];
+  }
 }
+async function getNpmLatestVersion(npmName, registry) {
+  let versions = await getNpmVersions(npmName, registry);
+  if (versions) {
+    return versions.sort((a, b) => (semver.gt(b, a) ? 1 : -1))[0];
+  }
+  return null;
+}
+module.exports = {
+  getNpmInfo,
+  getNpmVersions,
+  getNpmSemverVersions,
+  getDefaultRegistry,
+  getNpmLatestVersion,
+};

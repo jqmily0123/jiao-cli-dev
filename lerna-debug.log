@@ -1,13 +1,18 @@
 0 silly argv {
-0 silly argv   _: [ 'add' ],
-0 silly argv   globs: [],
+0 silly argv   _: [ 'create' ],
 0 silly argv   lernaVersion: '6.6.1',
 0 silly argv   '$0': '/usr/local/node/lib/node_modules/lerna/dist/cli.js',
-0 silly argv   pkg: 'jiao-dev'
+0 silly argv   name: '@jiao-cli-dedv/exec'
 0 silly argv }
 1 notice cli v6.6.1
 2 verbose rootPath /usr/jiaodata/jiao-cli-dev
-3 error HttpErrorGeneral: 404 Not Found - GET https://registry.npmjs.org/jiao-dev - Not found
-3 error     at /usr/local/node/lib/node_modules/lerna/node_modules/.store/npm-registry-fetch@13.3.1/node_modules/npm-registry-fetch/lib/check-response.js:95:15
-3 error     at processTicksAndRejections (node:internal/process/task_queues:96:5)
-3 error     at async RegistryFetcher.packument (/usr/local/node/lib/node_modules/lerna/node_modules/.store/pacote@13.6.2/node_modules/pacote/lib/registry.js:92:19)
+3 error Error: canceled
+3 error     at Interface.<anonymous> (/usr/local/node/lib/node_modules/lerna/node_modules/.store/read@1.0.7/node_modules/read/lib/read.js:66:13)
+3 error     at Interface.emit (node:events:513:28)
+3 error     at Interface._ttyWrite (node:readline:1085:16)
+3 error     at ReadStream.onkeypress (node:readline:291:10)
+3 error     at ReadStream.emit (node:events:513:28)
+3 error     at emitKeys (node:internal/readline/utils:357:14)
+3 error     at emitKeys.next (<anonymous>)
+3 error     at ReadStream.onData (node:internal/readline/emitKeypressEvents:61:36)
+3 error     at ReadStream.emit (node:events:513:28)

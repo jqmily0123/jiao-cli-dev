@@ -5,17 +5,17 @@
 0 silly argv }
 1 notice cli v3.22.1
 2 verbose rootPath /usr/jiaodata/jiao-cli-dev
-3 info current version 1.0.6
+3 info current version 1.0.7
 4 silly isAnythingCommitted
 5 verbose isAnythingCommitted 1
 6 silly currentBranch
 7 verbose currentBranch master
 8 silly remoteBranchExists
 9 silly isBehindUpstream
-10 silly isBehindUpstream master is behind origin/master by 0 commit(s) and ahead by 2
+10 silly isBehindUpstream master is behind origin/master by 0 commit(s) and ahead by 3
 11 silly hasTags
 12 verbose hasTags true
-13 silly git-describe.sync "v1.0.5-5-g9c659b0e" => {"lastTagName":"v1.0.5","lastVersion":"v1.0.5","refCount":"5","sha":"9c659b0e","isDirty":false}
+13 silly git-describe.sync "v1.0.5-6-g68bca8c2" => {"lastTagName":"v1.0.5","lastVersion":"v1.0.5","refCount":"6","sha":"68bca8c2","isDirty":false}
 14 info Looking for changed packages since v1.0.5
 15 silly checking diff commands/init
 16 silly found diff in commands/init/README.md
@@ -129,16 +129,16 @@
 44 verbose updated @jiao-cli-dev/format-path
 45 verbose updated @imooc-cli-dev/get-npm-info
 46 verbose updated @jiao-cli-dev/log
-47 verbose git-describe undefined => "v1.0.5-5-g9c659b0e"
-48 silly git-describe parsed => {"lastTagName":"v1.0.5","lastVersion":"v1.0.5","refCount":"5","sha":"9c659b0e","isDirty":false}
+47 verbose git-describe undefined => "v1.0.5-6-g68bca8c2"
+48 silly git-describe parsed => {"lastTagName":"v1.0.5","lastVersion":"v1.0.5","refCount":"6","sha":"68bca8c2","isDirty":false}
 49 info execute Skipping releases
 50 silly lifecycle No script for "preversion" in "jiao-cli-dev", continuing
 51 silly lifecycle No script for "preversion" in "@jiao-cli-dev/command", continuing
 52 silly lifecycle No script for "preversion" in "@jiao-cli-dev/format-path", continuing
 53 silly lifecycle No script for "preversion" in "@imooc-cli-dev/get-npm-info", continuing
 54 silly lifecycle No script for "preversion" in "@jiao-cli-dev/log", continuing
-55 silly lifecycle No script for "version" in "@imooc-cli-dev/get-npm-info", continuing
-56 silly lifecycle No script for "version" in "@jiao-cli-dev/command", continuing
+55 silly lifecycle No script for "version" in "@jiao-cli-dev/command", continuing
+56 silly lifecycle No script for "version" in "@imooc-cli-dev/get-npm-info", continuing
 57 silly lifecycle No script for "version" in "@jiao-cli-dev/format-path", continuing
 58 silly lifecycle No script for "preversion" in "@jiao-cli-dev/package", continuing
 59 silly lifecycle No script for "version" in "@jiao-cli-dev/log", continuing
@@ -151,10 +151,10 @@
 66 silly lifecycle No script for "version" in "@jiao-cli-dev/core", continuing
 67 silly lifecycle No script for "version" in "jiao-cli-dev", continuing
 68 silly gitAdd [
-68 silly gitAdd   'utils/get-npm-info/package.json',
-68 silly gitAdd   'utils/get-npm-info/package-lock.json',
 68 silly gitAdd   'models/command/package.json',
 68 silly gitAdd   'models/command/package-lock.json',
+68 silly gitAdd   'utils/get-npm-info/package.json',
+68 silly gitAdd   'utils/get-npm-info/package-lock.json',
 68 silly gitAdd   'utils/format-path/package.json',
 68 silly gitAdd   'utils/format-path/package-lock.json',
 68 silly gitAdd   'utils/log/package.json',
@@ -169,7 +169,7 @@
 68 silly gitAdd   'core/cli/package-lock.json',
 68 silly gitAdd   'lerna.json'
 68 silly gitAdd ]
-69 error Error: Command failed: git add -- utils/get-npm-info/package.json utils/get-npm-info/package-lock.json models/command/package.json models/command/package-lock.json utils/format-path/package.json utils/format-path/package-lock.json utils/log/package.json utils/log/package-lock.json models/package/package.json models/package/package-lock.json commands/init/package.json commands/init/package-lock.json core/exec/package.json core/exec/package-lock.json core/cli/package.json core/cli/package-lock.json lerna.json
+69 error Error: Command failed: git add -- models/command/package.json models/command/package-lock.json utils/get-npm-info/package.json utils/get-npm-info/package-lock.json utils/format-path/package.json utils/format-path/package-lock.json utils/log/package.json utils/log/package-lock.json models/package/package.json models/package/package-lock.json commands/init/package.json commands/init/package-lock.json core/exec/package.json core/exec/package-lock.json core/cli/package.json core/cli/package-lock.json lerna.json
 69 error The following paths are ignored by one of your .gitignore files:
 69 error utils/format-path/package-lock.json
 69 error utils/log/package-lock.json

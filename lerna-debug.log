@@ -1,182 +1,26 @@
 0 silly argv {
 0 silly argv   _: [ 'version' ],
-0 silly argv   lernaVersion: '3.22.1',
-0 silly argv   '$0': '/root/.nvm/versions/node/v16.0.0/lib/node_modules/lerna/cli.js'
+0 silly argv   lernaVersion: '6.6.1',
+0 silly argv   '$0': '/usr/local/node/lib/node_modules/lerna/dist/cli.js'
 0 silly argv }
-1 notice cli v3.22.1
+1 notice cli v6.6.1
 2 verbose rootPath /usr/jiaodata/jiao-cli-dev
-3 info current version 1.0.7
+3 info current version 2.0.0
 4 silly isAnythingCommitted
 5 verbose isAnythingCommitted 1
-6 silly currentBranch
+6 silly getCurrentBranch
 7 verbose currentBranch master
 8 silly remoteBranchExists
 9 silly isBehindUpstream
-10 silly isBehindUpstream master is behind origin/master by 0 commit(s) and ahead by 3
-11 silly hasTags
-12 verbose hasTags true
-13 silly git-describe.sync "v1.0.5-6-g68bca8c2" => {"lastTagName":"v1.0.5","lastVersion":"v1.0.5","refCount":"6","sha":"68bca8c2","isDirty":false}
-14 info Looking for changed packages since v1.0.5
-15 silly checking diff commands/init
-16 silly found diff in commands/init/README.md
-16 silly found diff in commands/init/__tests__/init.test.js
-16 silly found diff in commands/init/lib/index.js
-16 silly found diff in commands/init/package-lock.json
-16 silly found diff in commands/init/package.json
-17 verbose filtered diff [
-17 verbose filtered diff   'commands/init/README.md',
-17 verbose filtered diff   'commands/init/__tests__/init.test.js',
-17 verbose filtered diff   'commands/init/lib/index.js',
-17 verbose filtered diff   'commands/init/package-lock.json',
-17 verbose filtered diff   'commands/init/package.json'
-17 verbose filtered diff ]
-18 silly checking diff core/cli
-19 silly found diff in core/cli/README.md
-19 silly found diff in core/cli/__tests__/core.test.js
-19 silly found diff in core/cli/bin/index.js
-19 silly found diff in core/cli/lib/const.js
-19 silly found diff in core/cli/lib/index.js
-19 silly found diff in core/cli/package-lock.json
-19 silly found diff in core/cli/package.json
-20 verbose filtered diff [
-20 verbose filtered diff   'core/cli/README.md',
-20 verbose filtered diff   'core/cli/__tests__/core.test.js',
-20 verbose filtered diff   'core/cli/bin/index.js',
-20 verbose filtered diff   'core/cli/lib/const.js',
-20 verbose filtered diff   'core/cli/lib/index.js',
-20 verbose filtered diff   'core/cli/package-lock.json',
-20 verbose filtered diff   'core/cli/package.json'
-20 verbose filtered diff ]
-21 silly checking diff core/exec
-22 silly found diff in core/exec/README.md
-22 silly found diff in core/exec/__tests__/exec.test.js
-22 silly found diff in core/exec/lib/index.js
-22 silly found diff in core/exec/package-lock.json
-22 silly found diff in core/exec/package.json
-23 verbose filtered diff [
-23 verbose filtered diff   'core/exec/README.md',
-23 verbose filtered diff   'core/exec/__tests__/exec.test.js',
-23 verbose filtered diff   'core/exec/lib/index.js',
-23 verbose filtered diff   'core/exec/package-lock.json',
-23 verbose filtered diff   'core/exec/package.json'
-23 verbose filtered diff ]
-24 silly checking diff models/command
-25 silly found diff in models/command/README.md
-25 silly found diff in models/command/__tests__/command.test.js
-25 silly found diff in models/command/lib/index.js
-25 silly found diff in models/command/package-lock.json
-25 silly found diff in models/command/package.json
-26 verbose filtered diff [
-26 verbose filtered diff   'models/command/README.md',
-26 verbose filtered diff   'models/command/__tests__/command.test.js',
-26 verbose filtered diff   'models/command/lib/index.js',
-26 verbose filtered diff   'models/command/package-lock.json',
-26 verbose filtered diff   'models/command/package.json'
-26 verbose filtered diff ]
-27 silly checking diff models/package
-28 silly found diff in models/package/README.md
-28 silly found diff in models/package/__tests__/package.test.js
-28 silly found diff in models/package/lib/index.js
-28 silly found diff in models/package/package-lock.json
-28 silly found diff in models/package/package.json
-29 verbose filtered diff [
-29 verbose filtered diff   'models/package/README.md',
-29 verbose filtered diff   'models/package/__tests__/package.test.js',
-29 verbose filtered diff   'models/package/lib/index.js',
-29 verbose filtered diff   'models/package/package-lock.json',
-29 verbose filtered diff   'models/package/package.json'
-29 verbose filtered diff ]
-30 silly checking diff utils/format-path
-31 silly found diff in utils/format-path/README.md
-31 silly found diff in utils/format-path/__tests__/format-path.test.js
-31 silly found diff in utils/format-path/lib/index.js
-31 silly found diff in utils/format-path/package.json
-32 verbose filtered diff [
-32 verbose filtered diff   'utils/format-path/README.md',
-32 verbose filtered diff   'utils/format-path/__tests__/format-path.test.js',
-32 verbose filtered diff   'utils/format-path/lib/index.js',
-32 verbose filtered diff   'utils/format-path/package.json'
-32 verbose filtered diff ]
-33 silly checking diff utils/get-npm-info
-34 silly found diff in utils/get-npm-info/README.md
-34 silly found diff in utils/get-npm-info/__tests__/get-npm-info.test.js
-34 silly found diff in utils/get-npm-info/lib/index.js
-34 silly found diff in utils/get-npm-info/package-lock.json
-34 silly found diff in utils/get-npm-info/package.json
-35 verbose filtered diff [
-35 verbose filtered diff   'utils/get-npm-info/README.md',
-35 verbose filtered diff   'utils/get-npm-info/__tests__/get-npm-info.test.js',
-35 verbose filtered diff   'utils/get-npm-info/lib/index.js',
-35 verbose filtered diff   'utils/get-npm-info/package-lock.json',
-35 verbose filtered diff   'utils/get-npm-info/package.json'
-35 verbose filtered diff ]
-36 silly checking diff utils/log
-37 silly found diff in utils/log/README.md
-37 silly found diff in utils/log/__tests__/log.test.js
-37 silly found diff in utils/log/lib/index.js
-37 silly found diff in utils/log/package.json
-38 verbose filtered diff [
-38 verbose filtered diff   'utils/log/README.md',
-38 verbose filtered diff   'utils/log/__tests__/log.test.js',
-38 verbose filtered diff   'utils/log/lib/index.js',
-38 verbose filtered diff   'utils/log/package.json'
-38 verbose filtered diff ]
-39 verbose updated @imooc-cli-dev/init
-40 verbose updated @jiao-cli-dev/core
-41 verbose updated @jiao-cli-dev/exec
-42 verbose updated @jiao-cli-dev/command
-43 verbose updated @jiao-cli-dev/package
-44 verbose updated @jiao-cli-dev/format-path
-45 verbose updated @imooc-cli-dev/get-npm-info
-46 verbose updated @jiao-cli-dev/log
-47 verbose git-describe undefined => "v1.0.5-6-g68bca8c2"
-48 silly git-describe parsed => {"lastTagName":"v1.0.5","lastVersion":"v1.0.5","refCount":"6","sha":"68bca8c2","isDirty":false}
-49 info execute Skipping releases
-50 silly lifecycle No script for "preversion" in "jiao-cli-dev", continuing
-51 silly lifecycle No script for "preversion" in "@jiao-cli-dev/command", continuing
-52 silly lifecycle No script for "preversion" in "@jiao-cli-dev/format-path", continuing
-53 silly lifecycle No script for "preversion" in "@imooc-cli-dev/get-npm-info", continuing
-54 silly lifecycle No script for "preversion" in "@jiao-cli-dev/log", continuing
-55 silly lifecycle No script for "version" in "@jiao-cli-dev/command", continuing
-56 silly lifecycle No script for "version" in "@imooc-cli-dev/get-npm-info", continuing
-57 silly lifecycle No script for "version" in "@jiao-cli-dev/format-path", continuing
-58 silly lifecycle No script for "preversion" in "@jiao-cli-dev/package", continuing
-59 silly lifecycle No script for "version" in "@jiao-cli-dev/log", continuing
-60 silly lifecycle No script for "preversion" in "@imooc-cli-dev/init", continuing
-61 silly lifecycle No script for "version" in "@jiao-cli-dev/package", continuing
-62 silly lifecycle No script for "preversion" in "@jiao-cli-dev/exec", continuing
-63 silly lifecycle No script for "version" in "@imooc-cli-dev/init", continuing
-64 silly lifecycle No script for "version" in "@jiao-cli-dev/exec", continuing
-65 silly lifecycle No script for "preversion" in "@jiao-cli-dev/core", continuing
-66 silly lifecycle No script for "version" in "@jiao-cli-dev/core", continuing
-67 silly lifecycle No script for "version" in "jiao-cli-dev", continuing
-68 silly gitAdd [
-68 silly gitAdd   'models/command/package.json',
-68 silly gitAdd   'models/command/package-lock.json',
-68 silly gitAdd   'utils/get-npm-info/package.json',
-68 silly gitAdd   'utils/get-npm-info/package-lock.json',
-68 silly gitAdd   'utils/format-path/package.json',
-68 silly gitAdd   'utils/format-path/package-lock.json',
-68 silly gitAdd   'utils/log/package.json',
-68 silly gitAdd   'utils/log/package-lock.json',
-68 silly gitAdd   'models/package/package.json',
-68 silly gitAdd   'models/package/package-lock.json',
-68 silly gitAdd   'commands/init/package.json',
-68 silly gitAdd   'commands/init/package-lock.json',
-68 silly gitAdd   'core/exec/package.json',
-68 silly gitAdd   'core/exec/package-lock.json',
-68 silly gitAdd   'core/cli/package.json',
-68 silly gitAdd   'core/cli/package-lock.json',
-68 silly gitAdd   'lerna.json'
-68 silly gitAdd ]
-69 error Error: Command failed: git add -- models/command/package.json models/command/package-lock.json utils/get-npm-info/package.json utils/get-npm-info/package-lock.json utils/format-path/package.json utils/format-path/package-lock.json utils/log/package.json utils/log/package-lock.json models/package/package.json models/package/package-lock.json commands/init/package.json commands/init/package-lock.json core/exec/package.json core/exec/package-lock.json core/cli/package.json core/cli/package-lock.json lerna.json
-69 error The following paths are ignored by one of your .gitignore files:
-69 error utils/format-path/package-lock.json
-69 error utils/log/package-lock.json
-69 error hint: Use -f if you really want to add them.
-69 error hint: Turn this message off by running
-69 error hint: "git config advice.addIgnoredFile false"
-69 error
-69 error     at makeError (/usr/jiaodata/jiao-cli-dev/node_modules/execa/index.js:174:9)
-69 error     at /usr/jiaodata/jiao-cli-dev/node_modules/execa/index.js:278:16
-69 error     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+10 error Error: Command failed with exit code 1: git remote update
+10 error Permission denied (publickey).
+10 error fatal: Could not read from remote repository.
+10 error
+10 error Please make sure you have the correct access rights
+10 error and the repository exists.
+10 error     at makeError (/usr/local/node/lib/node_modules/lerna/node_modules/.store/execa@5.1.1/node_modules/execa/lib/error.js:60:11)
+10 error     at Function.module.exports.sync (/usr/local/node/lib/node_modules/lerna/node_modules/.store/execa@5.1.1/node_modules/execa/index.js:194:17)
+10 error     at Object.execSync (/usr/local/node/lib/node_modules/lerna/node_modules/.store/@lerna+child-process@6.6.1/node_modules/@lerna/child-process/index.js:39:16)
+10 error     at updateRemote (/usr/local/node/lib/node_modules/lerna/dist/cli.js:5908:22)
+10 error     at isBehindUpstream (/usr/local/node/lib/node_modules/lerna/dist/cli.js:5898:7)
+10 error     at VersionCommand.initialize (/usr/local/node/lib/node_modules/lerna/dist/cli.js:6233:57)

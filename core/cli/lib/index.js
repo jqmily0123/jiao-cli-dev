@@ -12,7 +12,7 @@ const commander = require("commander");
 // const log = require("@jiao-cli-dev/log");
 const exec = require("@jiao-cli-dev/exec");
 async function core() {
-  prepare();
+  // prepare();
   registerCommand();
 }
 async function prepare() {

@@ -9,8 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lerna": "^3.22.1",
-    "node": "^19.8.1"
+    "lerna": "^3.22.1"
   },
   "publishConfig": {
     "access": "public"

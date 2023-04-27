@@ -1,9 +1,9 @@
 {
-  "name": "@imooc-cli-dev/get-npm-info",
-  "version": "2.0.0",
-  "description": "> TODO: description",
-  "author": "jiaodashi <1500983162@qq.com>",
-  "homepage": "https://github.com/jqmily0123/jiao-cli-dev#readme",
+  "name": "@jiao-cli-dev/get-npm-info",
+  "version": "1.0.4",
+  "description": "get npm info",
+  "author": "sam <247765564@qq.com>",
+  "homepage": "",
   "license": "ISC",
   "main": "lib/index.js",
   "directories": {
@@ -15,16 +15,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jqmily0123/jiao-cli-dev.git"
+    "url": "git@gitee.com:sam9831/imooc-cli-dev.git"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "bugs": {
-    "url": "https://github.com/jqmily0123/jiao-cli-dev/issues"
   },
   "dependencies": {
     "axios": "^0.21.0",

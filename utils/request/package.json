@@ -1,7 +1,7 @@
 {
-  "name": "@jiao-cli-dev/format-path",
+  "name": "@jiao-cli-dev/request",
   "version": "1.0.0",
-  "description": "format path",
+  "description": "> TODO: description",
   "author": "sam <247765564@qq.com>",
   "homepage": "",
   "license": "ISC",
@@ -22,5 +22,8 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
   }
 }

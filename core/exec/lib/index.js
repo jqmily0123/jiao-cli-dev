@@ -19,6 +19,8 @@ async function exec() {
   const packageVersion = "1.0.1";
   let storeDir = "";
   let pkg = "";
+  //如果没有传targetPath 就给tagetPath一个默认值 在这里就是 jiaodashi/node_modules 缓存路径是空路径
+
   if (!targetPath) {
     targetPath = path.resolve(homePath, CACHE_DIR);
     storeDir = path.resolve(targetPath, "node_modules");
@@ -46,7 +48,10 @@ async function exec() {
       packageVersion,
     });
   }
+  //获取入口文件的路径
   const rootFile = pkg.getRootFilePath();
+  //以下的逻辑就是开启子进程执行init方法
+  //如果命令行没有传targetPath targetPath就会自动生成 pkg的install 方法会自动下载到生成的targetPath里面
   if (rootFile) {
     const args = Array.from(arguments);
     const cmd = args[args.length - 1];
@@ -56,7 +61,6 @@ async function exec() {
         o[key] = cmd[key];
       }
     });
-    // console.log(o);
     args[args.length - 1] = o;
     const code = `require('${rootFile}').init.call(null,${JSON.stringify(
       args

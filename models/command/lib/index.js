@@ -5,7 +5,6 @@ const semver = require("semver");
 const log = require("@imooc-cli-dev/log");
 class Command {
   constructor(argv) {
-    console.log("command", argv);
     if (!argv) {
       throw new Error("参数不能为空");
     }
@@ -36,10 +35,11 @@ class Command {
     });
   }
   // 初始化参数
+  //这里的 this._cmd是 commander传过来的option对象
+  //这里的 this._argv是 init 传递过来的 projectName对象
   initArgs() {
     this._cmd = this._argv[this._argv.length - 1];
     this._argv = this._argv.slice(0, this._argv.length - 1);
-    // console.log(this._cmd, this._argv);
   }
   // 检查node版本
   checkNodeVersion() {

@@ -28,6 +28,8 @@ class Package {
     this.packageVersion = packageVersion;
     this.catchFilePathPrefix = this.packageName.replace("/", "_");
   }
+  //这里的prepare的逻辑是 1.检查用户的缓存路径是否存在，如果不存在就创建该目录
+  //二个是判断用户输入的版本信息是否是最新版
   async prepare() {
     if (this.storeDir && pathExists(this.storeDir)) {
       fse.mkdirpSync(this.storeDir);
@@ -40,6 +42,7 @@ class Package {
   async exists() {
     if (this.storeDir) {
       await this.prepare();
+      console.log(this.catchFilePath);
       return pathExists(this.catchFilePath);
     } else {
       return pathExists(this.targetPath);
@@ -54,7 +57,7 @@ class Package {
   getSpecificFilePath(packageVersion) {
     return path.resolve(
       this.storeDir,
-      `_${this.catchFilePathPrefix}@${packageVersion}@${this.packageName}`
+      `_${this.catchFilePathPrefix}@${this.packageVersion}@${this.packageName}`
     );
   }
   // 安装package

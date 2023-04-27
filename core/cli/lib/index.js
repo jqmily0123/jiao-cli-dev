@@ -4,7 +4,6 @@ module.exports = core;
 const path = require("path");
 const pkg = require("../package.json");
 const log = require("@jiao-cli-dev/log");
-
 const colors = require("colors/safe");
 const userHome = require("user-home");
 const commander = require("commander");
@@ -12,15 +11,20 @@ const commander = require("commander");
 // const log = require("@jiao-cli-dev/log");
 const exec = require("@jiao-cli-dev/exec");
 async function core() {
-  // prepare();
+  prepare();
   registerCommand();
 }
 async function prepare() {
+  //检查当前脚手架的版本
   checkPkgVersion();
+  //检查当前用户是否是root用户 如果是则降级
   checkRoot();
   // checkUserHome();
+  //解析命令行参数 逻辑是 如果命令行里有debug 就在.env里面 存储日志级别
   checkInputArgs();
+  //这个方法就是用来将用用户名录下的.env 文件加载进 process.env变量里面
   checkEnv();
+  //这个方法就是用来 提示用户更新 init脚本
   await checkGlobalUpdate();
 }
 //注册脚手架
@@ -49,7 +53,6 @@ function registerCommand() {
       process.env.LOG_LEVEL = "info";
     }
     log.level = process.env.LOG_LEVEL;
-    log.verbose("verbose");
   });
   program.on("option:targetPath", function () {
     process.env.CLI_TARGET_PATH = program.targetPath;
@@ -79,12 +82,12 @@ async function checkGlobalUpdate() {
   // 1.获取当前版本号
   const currentVersion = pkg.version;
   const pkgName = pkg.name;
-  const { getNpmSemverVersions } = require("@jiao-cli-dev/get-npm-info");
-  const lastVersion = await getNpmSemverVersions(currentVersion, pkgName);
+  const { getNpmSemverVersion } = require("@jiao-cli-dev/get-npm-info");
+  const lastVersion = await getNpmSemverVersion(currentVersion, pkgName);
   if (lastVersion && semver.gt(lastVersion, currentVersion)) {
     log.warn(
       colors.yellow(
-        `请手动更新${pkgName}当前的版本${currentVersion},最新版本${lastVersion} 更新命令：npm install -g ${pkgName}`
+        `请手动更新${pkgName}当前的版本${currentVersion},最新版本${lastVersin} 更新命令：npm install -g ${pkgName}`
       )
     );
   }
@@ -112,6 +115,7 @@ function createDefaultConfig() {
   process.env.CLI_HOME_PATH = cliConfig.cliHome;
 }
 function checkInputArgs() {
+  // minimist这个库用来做参数解析
   const minimist = require("minimist");
   const args = minimist(process.argv.slice(2));
   checkArgs(args);

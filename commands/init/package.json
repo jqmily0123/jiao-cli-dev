@@ -29,13 +29,16 @@
   "dependencies": {
     "@jiao-cli-dev/command": "file:../../models/command",
     "@jiao-cli-dev/log": "file:../../utils/log",
+    "@jiao-cli-dev/package": "file:../../models/package",
+    "@jiao-cli-dev/request": "file:../../utils/request",
+    "@jiao-cli-dev/utils": "file:../../utils",
     "ejs": "^3.1.5",
     "fs-extra": "^9.0.1",
     "glob": "^7.1.6",
     "inquirer": "^7.3.3",
     "kebab-case": "^1.0.0",
-    "semver": "^7.3.4",
+    "semver": "^7.5.0",
     "spinner": "^0.3.4",
-    "user-home": "^2.0.0"
+    "user-home": "^3.0.0"
   }
 }

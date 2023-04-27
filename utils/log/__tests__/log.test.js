@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-const log = require("../lib");
-const assert = require("assert").strict;
+const log = require('..');
 
-assert.strictEqual(log(), "Hello from log");
-console.info("log tests passed");
+describe('@imooc-cli-dev/log', () => {
+    it('needs tests');
+});

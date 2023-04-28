@@ -9,13 +9,15 @@ const fs = require("fs");
 const { valid } = require("semver");
 const path = require("path");
 const userHome = require("user-home");
+const ejs = require("ejs");
 const getProjectTemplate = require("./getProjectTemplate");
+const { promises } = require("dns");
 const TYPE_PROJECT = "project";
 const TYPE_COMPONENT = "component";
 const TEMPLATE_TYPE_NORMAL = "normal";
 const TEMPLATE_TYPE_CUSTOM = "custom";
+const WHITE_COMMAND = ["npm", "cnpm"];
 const localPath = process.cwd();
-// console.log("wozhixingle");
 class InitCommand extends Command {
   //这里的init方法主要是用来解构出项目名称和 --force 属性值
 
@@ -31,7 +33,6 @@ class InitCommand extends Command {
       // 1.准备阶段
       //这里就是 有两个作用一个是 判断是否强制清空目录 二是 返回用户输入的版本信息
       const projectInfo = await this.prepare();
-      console.log("project", projectInfo);
       // 2.下载模板
       if (projectInfo) {
         log.verbose("projectInfo", projectInfo);
@@ -41,8 +42,34 @@ class InitCommand extends Command {
       // 3.安装模板
       await this.installTemplate();
     } catch (error) {
+      console.log(error);
       log.error(error.message);
     }
+  }
+  checkCommand(cmd) {
+    if (WHITE_COMMAND.includes(cmd)) {
+      return cmd;
+    }
+    return null;
+  }
+  async execCommand(command, errMsg) {
+    let ret;
+    if (command) {
+      const cmdArray = command.split(" ");
+      const cmd = this.checkCommand(cmdArray[0]);
+      if (!cmd) {
+        throw new Error("命令不存在！命令：" + command);
+      }
+      const args = cmdArray.slice(1);
+      ret = await execAsync(cmd, args, {
+        stdio: "inherit",
+        cwd: process.cwd(),
+      });
+    }
+    if (ret !== 0) {
+      throw new Error(errMsg);
+    }
+    return ret;
   }
   async installTemplate() {
     if (this.templateInfo) {
@@ -64,11 +91,9 @@ class InitCommand extends Command {
   }
   async installNormalTemplate() {
     log.verbose("template", this.templateInfo);
-    log.verbose("catchFilePath", this.templateInfo);
-
     //拷贝模板到当前目录
     const templatePath = path.resolve(
-      this.templateNpm.catchFilePath,
+      this.templateNpm.cacheFilePath,
       "template"
     );
     let spinner = spinnerStart("正在安装模板");
@@ -76,25 +101,21 @@ class InitCommand extends Command {
       const targetPath = process.cwd();
       fse.ensureDirSync(templatePath);
       fse.ensureDirSync(targetPath);
-      fse.copy(templatePath, targetPath);
+      await fse.copy(templatePath, targetPath);
     } catch (error) {
       throw new Error(error);
     } finally {
       spinner.stop(true);
     }
+    //ejs渲染
+    const ignore = ["node_modules/**", "public/**"];
+    await this.ejsRender({ ignore });
     //安装依赖
     const { installCommand, startCommand } = this.templateInfo;
     // console.log(installCommand, startCommand);
-    if (installCommand && installCommand.length > 0) {
-      const cmdArr = installCommand.split(" ");
-      const cmd = cmdArr[0];
-      const args = cmdArr.slice(1);
-      const ret = await execAsync(cmd, args, {
-        stdio: "inherit",
-        cwd: process.cwd(),
-      });
-      console.log(ret);
-    }
+    // await this.execCommand(installCommand, "依赖安装失败！");
+    // 启动命令执行
+    // await this.execCommand(startCommand, "启动执行命令失败！");
   }
   async installCustomTemplate() {}
   //这里的逻辑是将用户的信息和模板库里的信息比对然后得到用户所选择的模板信息
@@ -131,8 +152,6 @@ class InitCommand extends Command {
         throw new Error("下载模板失败");
       } finally {
         spinner.stop(true);
-
-        console.log(await templateNpm.exists());
         if (await templateNpm.exists()) {
           this.templateNpm = templateNpm;
         }
@@ -160,7 +179,17 @@ class InitCommand extends Command {
 
   async getProjectInfo() {
     // 3选择创建项目或者组件
+    function isValidName(v) {
+      return /^[a-zA-Z]+([-][a-zA-Z][a-zA-Z0-9]*|[_][a-zA-Z][a-zA-Z0-9]*|[a-zA-Z0-9])*$/.test(
+        v
+      );
+    }
     let projectInfo = {};
+    let isProjectNameValid = false;
+    if (isValidName(this.projectName)) {
+      isProjectNameValid = true;
+      projectInfo.projectName = this.projectName;
+    }
     const { type } = await inquirer.prompt({
       type: "list",
       message: "请选择初始化类型",
@@ -203,7 +232,7 @@ class InitCommand extends Command {
               }
               done(null, true);
             }, 0);
-            return;
+            return v;
           },
         },
         {
@@ -213,7 +242,6 @@ class InitCommand extends Command {
           default: "1.0.0",
           validate: function (v) {
             const done = this.async();
-
             setTimeout(function () {
               if (!valid(v)) {
                 done("请输入合法的版本号");
@@ -235,9 +263,14 @@ class InitCommand extends Command {
         type,
         ...project,
       };
-      return projectInfo;
     } else if (type === TYPE_COMPONENT) {
     }
+    if (projectInfo.projectName) {
+      projectInfo.className = require("kebab-case")(
+        projectInfo.projectName
+      ).replace(/^-/, "");
+    }
+    return projectInfo;
   }
   createTemplateChoice() {
     return this.template.map((item) => ({
@@ -278,12 +311,12 @@ class InitCommand extends Command {
           default: false,
           message: "是否确认清空当前目录下的所有文件",
         });
-        console.log("jiaodshi");
         if (confirmDelete) {
           fse.emptyDirSync(localPath);
         }
       }
     }
+
     return await this.getProjectInfo();
     // 3选择创建项目或者组件
     // 4.获取项目基本信息
@@ -293,7 +326,49 @@ class InitCommand extends Command {
     fileList = fileList.filter(
       (file) => !file.startsWith(".") && ["node_modules"].indexOf(file) < 0
     );
-    return fileList && fileList.length <= 0;
+    return !fileList && fileList.length <= 0;
+  }
+  ejsRender(option) {
+    return new Promise((resolve, reject) => {
+      const glob = require("glob");
+      const dir = process.cwd();
+      glob(
+        "**",
+        {
+          cwd: dir,
+          ignore: option.ignore || 0,
+          nodir: true,
+        },
+        (err, files) => {
+          if (err) reject(err);
+          Promise.all(
+            files.map((file) => {
+              const filePath = path.join(dir, file);
+              return new Promise((resolve1, reject1) => {
+                ejs.renderFile(
+                  filePath,
+                  this.projectInfo,
+                  {},
+                  (err, result) => {
+                    if (err) {
+                      reject1(err);
+                    }
+                    fse.writeFileSync(filePath, result);
+                    resolve1(result);
+                  }
+                );
+              });
+            })
+          )
+            .then(() => {
+              resolve();
+            })
+            .catch((err) => {
+              reject(err);
+            });
+        }
+      );
+    });
   }
 }
 

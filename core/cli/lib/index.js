@@ -40,6 +40,11 @@ function registerCommand() {
     .command("init [projectName]")
     .option("-f,--force", "是否强制初始化项目")
     .action(exec);
+  program
+    .command("publish")
+    .option("--refleshService", "强制更新远程仓库token")
+    .option("--refleshToken", "强制更新远程仓库类型")
+    .action(exec);
   // program;
   //   .command("publish")
   //   .option("--refreshServer", "强制更新远程Git仓库")

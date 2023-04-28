@@ -5,6 +5,7 @@ const Package = require("@jiao-cli-dev/package");
 const log = require("@jiao-cli-dev/log");
 const SETTINGS = {
   init: "@imooc-cli/init",
+  publish: "@jiao-cli/publish",
 };
 const CACHE_DIR = "dependencies";
 

@@ -31,7 +31,7 @@ class Package {
   //这里的prepare的逻辑是 1.检查用户的缓存路径是否存在，如果不存在就创建该目录
   //二个是判断用户输入的版本信息是否是最新版
   async prepare() {
-    if (this.storeDir && pathExists(this.storeDir)) {
+    if (this.storeDir && !pathExists(this.storeDir)) {
       fse.mkdirpSync(this.storeDir);
     }
     if (this.packageVersion === "latest") {
@@ -42,13 +42,12 @@ class Package {
   async exists() {
     if (this.storeDir) {
       await this.prepare();
-      console.log(this.catchFilePath);
-      return pathExists(this.catchFilePath);
+      return pathExists(this.cacheFilePath);
     } else {
       return pathExists(this.targetPath);
     }
   }
-  get catchFilePath() {
+  get cacheFilePath() {
     return path.resolve(
       this.storeDir,
       `_${this.catchFilePathPrefix}@${this.packageVersion}@${this.packageName}`
@@ -57,7 +56,7 @@ class Package {
   getSpecificFilePath(packageVersion) {
     return path.resolve(
       this.storeDir,
-      `_${this.catchFilePathPrefix}@${this.packageVersion}@${this.packageName}`
+      `_${this.catchFilePathPrefix}@${packageVersion}@${this.packageName}`
     );
   }
   // 安装package
@@ -80,11 +79,10 @@ class Package {
     //1.获取最新的模块版本号
 
     //2.查询最新版本号的路径是否存在
-
-    //3.如果不存在安装最新版本
-    await this.prepare();
     const latestPackageVersion = await getNpmLatestVersion(this.packageName);
     const latestFilePath = this.getSpecificFilePath(latestPackageVersion);
+    //3.如果不存在安装最新版本
+    await this.prepare();
     if (!pathExists(latestFilePath)) {
       await npminstall({
         root: this.targetPath,
@@ -97,8 +95,8 @@ class Package {
           },
         ],
       });
-      this.packageVersion = latestPackageVersion;
     }
+    this.packageVersion = latestPackageVersion;
   }
   // 获取入口文件的路径
   getRootFilePath() {
